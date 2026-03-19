@@ -1,40 +1,29 @@
 #include <iostream>
-#include "Student.h"
-#include "Teacher.h"
-#include "Admin.h"
-#include "Book.h"
-#include "Reservation.h"
+#include "LibrarySystem.h"
+#include "Menu.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "=== Library Management System ===" << endl;
-    cout << "\nTesting Classes...\n" << endl;
+    LibrarySystem library;
 
-    Student student1("S001", "John Doe", "pass123");
-    cout << "Student Created:" << endl;
-    student1.displayInfo();
+    cout << "Initializing Library Management System..." << endl;
+    cout << "Loading sample data..." << endl;
+    library.loadSampleData();
 
-    cout << "\n-------------------\n" << endl;
+    cout << "\n========================================" << endl;
+    cout << "   SAMPLE LOGIN CREDENTIALS" << endl;
+    cout << "========================================" << endl;
+    cout << "Student: S001 / pass123" << endl;
+    cout << "Teacher: T001 / teach123" << endl;
+    cout << "Admin:   A001 / admin123" << endl;
+    cout << "========================================" << endl;
+    cout << "\nPress Enter to continue...";
+    cin.get();
 
-    Teacher teacher1("T001", "Dr. Smith", "teach123", "Computer Science");
-    cout << "Teacher Created:" << endl;
-    teacher1.displayInfo();
-
-    cout << "\n-------------------\n" << endl;
-
-    Book book1("B001", "Introduction to C++", "Bjarne Stroustrup", "978-0321563842", 5, "Programming");
-    cout << "Book Created:" << endl;
-    book1.displayInfo();
-
-    cout << "\n-------------------\n" << endl;
-
-    Reservation reservation1("R001", "S001", "B001");
-    cout << "Reservation Created:" << endl;
-    reservation1.displayInfo();
-
-    cout << "\n\nAll classes created successfully!" << endl;
+    Menu menu(&library);
+    menu.run();
 
     return 0;
 }
